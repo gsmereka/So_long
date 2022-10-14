@@ -48,7 +48,7 @@ void	ft_set_memory(t_data *game, t_config *config);
 void	ft_set_variables(t_data *game, t_config *config);
 
 // set_file
-void	ft_set_file(int argc, char *addr, t_data *game);
+void	ft_set_map_file(int argc, char *addr, t_data *game);
 
 // set_map
 void	ft_set_map(t_data *game);
@@ -77,6 +77,7 @@ void	ft_set_mlx(t_data *game);
 int		ft_set_commands(int keysym, t_data *game);
 
 // set_images
+int	draw_map(t_data *game);
 int		ft_set_images(t_data *game);
 
 // set_images_tolls

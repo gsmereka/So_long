@@ -6,13 +6,13 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 21:44:30 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/13 11:34:57 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/13 12:33:58 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/data.h"
 
-void	ft_set_file(int argc, char *addr, t_data *game)
+void	ft_set_map_file(int argc, char *addr, t_data *game)
 {
 	if (argc != 2)
 		ft_set_shutdown(0, game, "Aceitamos apenas um mapa aqui\n");

@@ -16,7 +16,6 @@ static void	ft_set_window_size(t_data *game);
 static void	ft_create_image(t_data *game);
 static int	ft_create_window(t_data *game);
 static void	ft_set_hook(t_data *game);
-int			close_window(t_data *game);
 
 void	ft_set_mlx(t_data *game)
 {
@@ -54,6 +53,10 @@ static int	ft_create_window(t_data *game)
 
 static void	ft_create_image(t_data *game)
 {
+	int	x;
+
+	x = 80;
+	game->floor->img = mlx_xpm_file_to_image(game->win->ptr_mlx, game->floor->addr, &x, &x);
 	game->img->mlx_img = mlx_new_image(game->win->ptr_mlx,
 			game->win->width, game->win->height);
 	game->img->addr = mlx_get_data_addr(game->img->mlx_img,
@@ -62,6 +65,7 @@ static void	ft_create_image(t_data *game)
 
 static void	ft_set_hook(t_data *game)
 {
+	mlx_expose_hook(game->win->ptr_win, &draw_map, game);
 	mlx_hook(game->win->ptr_win,
 		DestroyNotify, NoEventMask, &close_window, game);
 	mlx_hook(game->win->ptr_win, KeyPress,

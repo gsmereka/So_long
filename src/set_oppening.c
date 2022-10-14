@@ -37,6 +37,7 @@ void	ft_set_memory(t_data *game, t_config *config)
 	game->map = malloc(sizeof(t_map));
 	game->map->grid = (char **)malloc((config->max_lines + 1) * sizeof (int *));
 	game->map->objects = malloc(sizeof(t_objects));
+	game->floor = malloc(sizeof(t_sprites));
 	game->player = malloc(sizeof(t_rect));
 	game->wall = malloc(sizeof(t_rect));
 	game->coin = malloc(sizeof(t_rect));

@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:34:20 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/13 11:34:29 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:16:55 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,10 @@ static int	ft_paint(t_check *valid_path, int x, int y)
 		valid_path->grid[y][x] = ' ';
 		return (1);
 	}
-	else if (valid_path->grid[y][x] == 'E')
+	else if (valid_path->grid[y][x] == 'E' && valid_path->exit < 1)
 	{
 		valid_path->exit++;
-		valid_path->grid[y][x] = ' ';
-		return (1);
+		return (0);
 	}
 	else if (valid_path->grid[y][x] == '0')
 	{

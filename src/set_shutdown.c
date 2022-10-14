@@ -36,6 +36,7 @@ void	ft_set_shutdown(int close_window, t_data *game, char *error_msg)
 
 void	ft_finish_game(int close_window, t_data *game)
 {
+	free(game->floor->addr);
 	ft_free_grid(game->map);
 	free(game->exit);
 	free(game->coin);
@@ -50,9 +51,12 @@ void	ft_finish_game(int close_window, t_data *game)
 		game->win->ptr_win = NULL;
 		if (game->img->mlx_img != NULL)
 			mlx_destroy_image(game->win->ptr_mlx, game->img->mlx_img);
+		if (game->floor->img != NULL)
+			mlx_destroy_image(game->win->ptr_mlx, game->floor->img);
 		mlx_destroy_display(game->win->ptr_mlx);
 		free(game->win->ptr_mlx);
 	}
+	free(game->floor);
 	free(game->img);
 	free(game->win);
 }

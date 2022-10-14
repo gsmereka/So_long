@@ -65,11 +65,20 @@ typedef struct s_window
 	int			height;
 }t_window;
 
+typedef struct s_sprites
+{
+	char	*addr;
+	void	*img;
+	int		x;
+	int		y;
+}t_sprites;
+
 typedef struct s_data
 {
 	t_window	*win;
 	t_img		*img;
 	t_map		*map;
+	t_sprites	*floor;
 	t_rect		*player;
 	t_rect		*wall;
 	t_rect		*coin;
