@@ -36,7 +36,19 @@ void	ft_set_shutdown(int close_window, t_data *game, char *error_msg)
 
 void	ft_finish_game(int close_window, t_data *game)
 {
+	free(game->play->addr);
 	free(game->floor->addr);
+	if (close_window == 1)
+	{
+		if (game->floor->img != NULL)
+			mlx_destroy_image(game->win->ptr_mlx, game->floor->img);
+		if (game->play->img != NULL)
+			mlx_destroy_image(game->win->ptr_mlx, game->play->img);
+		mlx_destroy_window(game->win->ptr_mlx, game->win->ptr_win);
+		game->win->ptr_win = NULL;
+		mlx_destroy_display(game->win->ptr_mlx);
+		free(game->win->ptr_mlx);
+	}
 	ft_free_grid(game->map);
 	free(game->exit);
 	free(game->coin);
@@ -45,19 +57,8 @@ void	ft_finish_game(int close_window, t_data *game)
 	free(game->map->objects);
 	free(game->map->addr);
 	free(game->map);
-	if (close_window == 1)
-	{
-		mlx_destroy_window(game->win->ptr_mlx, game->win->ptr_win);
-		game->win->ptr_win = NULL;
-		if (game->img->mlx_img != NULL)
-			mlx_destroy_image(game->win->ptr_mlx, game->img->mlx_img);
-		if (game->floor->img != NULL)
-			mlx_destroy_image(game->win->ptr_mlx, game->floor->img);
-		mlx_destroy_display(game->win->ptr_mlx);
-		free(game->win->ptr_mlx);
-	}
+	free(game->play);
 	free(game->floor);
-	free(game->img);
 	free(game->win);
 }
 

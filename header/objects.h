@@ -13,15 +13,6 @@
 #ifndef OBJECTS_H
 # define OBJECTS_H
 
-typedef struct s_img
-{
-	void	*mlx_img;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
-}	t_img;
-
 typedef struct s_rect
 {
 	int	x;
@@ -76,9 +67,9 @@ typedef struct s_sprites
 typedef struct s_data
 {
 	t_window	*win;
-	t_img		*img;
 	t_map		*map;
 	t_sprites	*floor;
+	t_sprites	*play;
 	t_rect		*player;
 	t_rect		*wall;
 	t_rect		*coin;

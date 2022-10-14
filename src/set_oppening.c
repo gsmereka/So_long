@@ -33,16 +33,16 @@ void	ft_set_config(t_config *config)
 void	ft_set_memory(t_data *game, t_config *config)
 {
 	game->win = malloc(sizeof(t_window));
-	game->img = malloc(sizeof(t_img));
 	game->map = malloc(sizeof(t_map));
 	game->map->grid = (char **)malloc((config->max_lines + 1) * sizeof (int *));
 	game->map->objects = malloc(sizeof(t_objects));
 	game->floor = malloc(sizeof(t_sprites));
+	game->play = malloc(sizeof(t_sprites));
 	game->player = malloc(sizeof(t_rect));
 	game->wall = malloc(sizeof(t_rect));
 	game->coin = malloc(sizeof(t_rect));
 	game->exit = malloc(sizeof(t_rect));
-	if (!game->win || !game->img || !game->map || !game->map->grid
+	if (!game->win || !game->map || !game->map->grid
 		|| !game->map->objects || !game->player || !game->wall
 		|| !game->coin || !game->exit)
 		ft_set_shutdown(0, game, "Erro na alocação de memoria\n");

@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 11:30:38 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/13 23:13:42 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/14 09:23:52 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char *argv[])
 
 	ft_set_oppening(&game, &config);
 	game.floor->addr = ft_strdup("./floor.xpm");
+	game.play->addr = ft_strdup("./mago.xpm");
 	ft_set_map_file(argc, argv[1], &game);
 	ft_set_map(&game);
 	ft_set_objects(&game);

@@ -81,9 +81,6 @@ int	draw_map(t_data *game);
 int		ft_set_images(t_data *game);
 
 // set_images_tolls
-void	ft_pixel_put(t_img *img, int x, int y, int color);
-int		draw_object(t_img *img, t_rect *rect);
-void	pintar_fundo(t_data *game);
 
 // utils
 char	*get_next_line(int fd, int stop);
