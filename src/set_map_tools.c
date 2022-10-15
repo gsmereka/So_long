@@ -28,7 +28,7 @@ int	ft_check_walls(t_data *game)
 		if (game->map->grid[0][i] != wall ||
 		game->map->grid[game->map->lin - 1][i] != wall)
 			ft_set_shutdown(0, game,
-				"O mapa precisa estar cercado por paredes\n");
+				"Error\nThe map needs to be surrounded by walls.\n");
 		i++;
 	}
 	while (j < game->map->lin)
@@ -36,7 +36,7 @@ int	ft_check_walls(t_data *game)
 		if (game->map->grid[j][0] != wall ||
 			game->map->grid[j][game->map->col - 1] != wall)
 			ft_set_shutdown(0, game,
-				"O mapa precisa estar cercado por paredes\n");
+				"Error\nThe map needs to be surrounded by walls.\n");
 		j++;
 	}
 	return (0);
@@ -48,13 +48,13 @@ int	ft_check_composition(t_data *game)
 
 	invalid_char = ft_check_objects(game->map);
 	if (invalid_char > 0)
-		ft_set_shutdown(0, game, "Possui algum caractere invalido\n");
-	if (game->map->objects->max_player != 1)
-		ft_set_shutdown(0, game, "Numero invalido de jogadores\n");
-	if (game->map->objects->max_collectable < 1)
-		ft_set_shutdown(0, game, "Falta al menos 1 coletavel\n");
-	if (game->map->objects->max_exit != 1)
-		ft_set_shutdown(0, game, "Numero invalido de saidas\n");
+		ft_set_shutdown(0, game, "Error\nThe map have an invalid character.\n");
+	if (game->map->objects->n_players != 1)
+		ft_set_shutdown(0, game, "Error\nThe map need exactly 1 player.\n");
+	if (game->map->objects->n_collectibles < 1)
+		ft_set_shutdown(0, game, "Error\nThe map need at least 1 collectible.\n");
+	if (game->map->objects->n_exits != 1)
+		ft_set_shutdown(0, game, "Error\nThe map need exactly 1 exit.\n");
 	return (0);
 }
 
@@ -63,10 +63,10 @@ int	ft_check_path(t_data *game)
 	t_check	valid_path;
 
 	ft_set_path_check(game, &valid_path);
-	if (valid_path.coins != game->map->objects->max_collectable)
-		ft_set_shutdown(0, game, "O mapa não tem saida\n");
-	if (valid_path.exit != game->map->objects->max_exit)
-		ft_set_shutdown(0, game, "O mapa não tem saida\n");
+	if (valid_path.coins != game->map->objects->n_collectibles)
+		ft_set_shutdown(0, game, "Error\nIt is impossible to pass this map.\n");
+	if (valid_path.exit != game->map->objects->n_exits)
+		ft_set_shutdown(0, game, "Error\nIt is impossible to pass this map.\n");
 	return (0);
 }
 
@@ -82,11 +82,11 @@ static int	ft_check_objects(t_map *map)
 		while (j < map->col - 1)
 		{
 			if (map->grid[i][j] == map->objects->start)
-				map->objects->max_player++;
+				map->objects->n_players++;
 			else if (map->grid[i][j] == map->objects->colect)
-				map->objects->max_collectable++;
+				map->objects->n_collectibles++;
 			else if (map->grid[i][j] == map->objects->exit)
-				map->objects->max_exit++;
+				map->objects->n_exits++;
 			else if (map->grid[i][j] != map->objects->empty &&
 			map->grid[i][j] != map->objects->wall)
 				return (1);

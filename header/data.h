@@ -30,22 +30,12 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include "./objects.h"
-# define WINDOW_WIDTH 1280
-# define WINDOW_HEIGHT 720
-# define MLX_ERROR 1
-# define RED_PIXEL 0xFF0000
-# define GREEN_PIXEL 0x00FF00
-# define WHITE_PIXEL 0xFFFFFF
-# define BLACK_PIXEL 0x000000
-# define NAVY_BLUE 0x00005F
-# define PURPLE 0x800080
-# define GREEN_YELLOW 0xAFFF00
 
 // set_oppening
 void	ft_set_oppening(t_data *game, t_config *config);
-void	ft_set_config(t_config *config);
-void	ft_set_memory(t_data *game, t_config *config);
-void	ft_set_variables(t_data *game, t_config *config);
+
+// set_values
+void	ft_set_values(t_data *game, t_config *config);
 
 // set_file
 void	ft_set_map_file(int argc, char *addr, t_data *game);
@@ -70,17 +60,27 @@ void	free_grid(t_check *valid_path);
 // set_objects
 void	ft_set_objects(t_data *game);
 
+// set_sprites
+void	ft_set_sprites(t_data *game);
+
 // set_mlx
 void	ft_set_mlx(t_data *game);
+
+// set_objects_image
+void	set_objects_image(t_data *game);
 
 // set_commands
 int		ft_set_commands(int keysym, t_data *game);
 
 // set_images
-int	draw_map(t_data *game);
 int		ft_set_images(t_data *game);
 
 // set_images_tolls
+void	ft_draw_floor(int y, int x, t_data *game);
+void	ft_draw_wall(int y, int x, t_data *game);
+void	ft_draw_colect(int y, int x, t_data *game);
+void	ft_draw_exit(int y, int x, t_data *game);
+void	ft_draw_player(int y, int x, t_data *game);
 
 // utils
 char	*get_next_line(int fd, int stop);
@@ -88,14 +88,21 @@ size_t	ft_strlen(const char *s);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strchr(char *s, int c);
 char	*ft_strdup(char *s);
-
-// utils_2
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
+// utils_2
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+
 // set_shutdown
-int		close_window(t_data *game);
 void	ft_set_shutdown(int close_window, t_data *game, char *error_msg);
 void	ft_finish_game(int close_window, t_data *game);
-void	ft_free_map(t_map *map);
+void	free_structures(t_data *game);
+
+// set_shutdown_tools
+void	ft_free_grid(t_map *map);
+int		close_window(t_data *game);
+void	free_images(t_sprites *sprites);
 
 #endif

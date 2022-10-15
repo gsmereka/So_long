@@ -13,17 +13,6 @@
 #ifndef OBJECTS_H
 # define OBJECTS_H
 
-typedef struct s_rect
-{
-	int	x;
-	int	y;
-	int	largura;
-	int	altura;
-	int	cor;
-	int	speed;
-	int	moves;
-}	t_rect;
-
 typedef struct s_objects
 {
 	char	start;
@@ -31,9 +20,9 @@ typedef struct s_objects
 	char	empty;
 	char	colect;
 	char	exit;
-	int		max_player;
-	int		max_collectable;
-	int		max_exit;
+	int		n_players;
+	int		n_collectibles;
+	int		n_exits;
 }t_objects;
 
 typedef struct s_map
@@ -45,6 +34,7 @@ typedef struct s_map
 	char		*addr;
 	char		**grid;
 	int			fd;
+	int			player_moves;
 	t_objects	*objects;
 }t_map;
 
@@ -58,8 +48,11 @@ typedef struct s_window
 
 typedef struct s_sprites
 {
-	char	*addr;
-	void	*img;
+	char	**addr;
+	void	**img;
+	int		frame;
+	int		n_frames;
+	int		size;
 	int		x;
 	int		y;
 }t_sprites;
@@ -69,11 +62,10 @@ typedef struct s_data
 	t_window	*win;
 	t_map		*map;
 	t_sprites	*floor;
-	t_sprites	*play;
-	t_rect		*player;
-	t_rect		*wall;
-	t_rect		*coin;
-	t_rect		*exit;
+	t_sprites	*player;
+	t_sprites	*wall;
+	t_sprites	*colect;
+	t_sprites	*exit;
 }	t_data;
 
 typedef struct s_config

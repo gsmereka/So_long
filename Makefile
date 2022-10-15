@@ -6,7 +6,7 @@
 #    By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/30 22:11:38 by lbiasuz           #+#    #+#              #
-#    Updated: 2022/10/13 12:34:09 by gsmereka         ###   ########.fr        #
+#    Updated: 2022/10/15 14:33:16 by gsmereka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,11 @@ NAME	=	so_long.a
 
 CFLAGS	=	-Wall -Wextra -Werror
 
-SRC		=	./src/so_long.c ./src/set_commands.c ./src/set_images.c ./src/set_images_tools.c \
+SRC		=	./src/so_long.c ./src/set_commands.c ./src/set_images.c ./src/set_sprites.c \
 			./src/set_objects.c ./src/set_map_file.c ./utils/get_next_line.c ./src/set_mlx.c \
 			./utils/utils.c ./utils/utils_2.c ./src/set_map.c ./src/set_map_tools.c  ./src/set_shutdown.c \
-			./src/set_oppening.c ./src/set_path_check.c ./src/set_path_check_tools.c
+			./src/set_oppening.c ./src/set_path_check.c ./src/set_path_check_tools.c ./src/set_images_tools.c \
+			./src/set_shutdown_tools.c ./src/set_objects_image.c ./src/set_values.c
 
 HEADER	=	./header/data.h
 

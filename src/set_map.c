@@ -41,10 +41,10 @@ static void	ft_count_lines(t_data *game)
 	}
 	game->map->grid[lines] = get_next_line(game->map->fd, 1);
 	if (game->map->grid[lines] != NULL)
-		ft_set_shutdown(0, game, "O mapa tem muitas linhas\n");
+		ft_set_shutdown(0, game, "Error\nThe map is too big.\n");
 	if (lines <= 2)
 		ft_set_shutdown(0, game,
-			"\nMapa invalido, tem menos que 3 linhas validas\n");
+			"Error\nThe map has less than 3 lines or is invalid.\n");
 	game->map->lin = lines;
 }
 
@@ -57,9 +57,9 @@ static void	ft_count_col(t_data *game)
 	cols_nmb = (int)ft_strlen(game->map->grid[lines - 1]);
 	if (cols_nmb < 3)
 		ft_set_shutdown(0, game,
-			"Mapa invalido, tem menos que 3 colunas\n");
+			"Error\nThe map has less than 3 columns.\n");
 	if (cols_nmb > game->map->max_cols)
-		ft_set_shutdown(0, game, "O mapa tem muitas colunas\n");
+		ft_set_shutdown(0, game, "Error\nThe map is too big.\n");
 	game->map->col = cols_nmb;
 }
 
@@ -75,7 +75,7 @@ static void	ft_check_format(t_data *game)
 	{
 		cols = (int)ft_strlen(game->map->grid[i]);
 		if (cols != game->map->col + 1)
-			ft_set_shutdown(0, game, "O Mapa não é retangular\n");
+			ft_set_shutdown(0, game, "Error\nthe map is not rectangular.\n");
 		i++;
 	}
 }
@@ -85,6 +85,5 @@ static int	ft_validate_map(t_data *game)
 	ft_check_walls(game);
 	ft_check_composition(game);
 	ft_check_path(game);
-	printf("the map is valid\n");
 	return (1);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 16:31:47 by rinacio           #+#    #+#             */
-/*   Updated: 2022/10/11 14:05:43 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/14 14:35:03 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,22 @@ char	*ft_strdup(char *s)
 	}
 	dest[i] = '\0';
 	return (dest);
+}
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t			i;
+	unsigned int	r;
+
+	i = 0;
+	while ((s1[i] || s2[i]) && i < n)
+	{
+		if (s1[i] != s2[i])
+		{
+			r = (unsigned char)s1[i] - (unsigned char)s2[i];
+			return (r);
+		}
+		i++;
+	}
+	return (0);
 }

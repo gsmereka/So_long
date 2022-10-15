@@ -12,14 +12,18 @@
 
 #include "../header/data.h"
 
+static void	ft_set_sprites_memory(t_data *game);
+static void	ft_set_memory(t_data *game, t_config *config);
+static void	ft_set_config(t_config *config);
+
 void	ft_set_oppening(t_data *game, t_config *config)
 {
 	ft_set_config(config);
 	ft_set_memory(game, config);
-	ft_set_variables(game, config);
+	ft_set_sprites_memory(game);
 }
 
-void	ft_set_config(t_config *config)
+static void	ft_set_config(t_config *config)
 {
 	config->start = 'P';
 	config->wall = '1';
@@ -30,43 +34,38 @@ void	ft_set_config(t_config *config)
 	config->max_cols = 16;
 }
 
-void	ft_set_memory(t_data *game, t_config *config)
+static void	ft_set_memory(t_data *game, t_config *config)
 {
 	game->win = malloc(sizeof(t_window));
 	game->map = malloc(sizeof(t_map));
 	game->map->grid = (char **)malloc((config->max_lines + 1) * sizeof (int *));
 	game->map->objects = malloc(sizeof(t_objects));
 	game->floor = malloc(sizeof(t_sprites));
-	game->play = malloc(sizeof(t_sprites));
-	game->player = malloc(sizeof(t_rect));
-	game->wall = malloc(sizeof(t_rect));
-	game->coin = malloc(sizeof(t_rect));
-	game->exit = malloc(sizeof(t_rect));
+	game->player = malloc(sizeof(t_sprites));
+	game->wall = malloc(sizeof(t_sprites));
+	game->colect = malloc(sizeof(t_sprites));
+	game->exit = malloc(sizeof(t_sprites));
 	if (!game->win || !game->map || !game->map->grid
-		|| !game->map->objects || !game->player || !game->wall
-		|| !game->coin || !game->exit)
-		ft_set_shutdown(0, game, "Erro na alocação de memoria\n");
+		|| !game->map->objects || !game->floor || !game->player || !game->wall
+		|| !game->colect || !game->exit)
+		ft_set_shutdown(0, game, "Error\nError allocating memory.");
 }
 
-void	ft_set_variables(t_data *game, t_config *config)
+static void	ft_set_sprites_memory(t_data *game)
 {
-	int	i;
-
-	i = 0;
-	game->map->objects->start = config->start;
-	game->map->objects->wall = config->wall;
-	game->map->objects->empty = config->empty;
-	game->map->objects->colect = config->colect;
-	game->map->objects->exit = config->exit;
-	game->map->max_lines = config->max_lines;
-	game->map->max_cols = config->max_cols;
-	game->map->objects->max_player = 0;
-	game->map->objects->max_exit = 0;
-	game->map->objects->max_collectable = 0;
-	game->map->addr = NULL;
-	while (i < config->max_lines + 1)
-	{
-		game->map->grid[i] = NULL;
-		i++;
-	}
+	game->floor->addr = (char **)malloc((1) * sizeof (int *));
+	game->player->addr = (char **)malloc((4) * sizeof (int *));
+	game->wall->addr = (char **)malloc((1) * sizeof (int *));
+	game->colect->addr = (char **)malloc((1) * sizeof (int *));
+	game->exit->addr = (char **)malloc((1) * sizeof (int *));
+	game->floor->img = (void **)malloc((1) * sizeof (int *));
+	game->player->img = (void **)malloc((4) * sizeof (int *));
+	game->wall->img = (void **)malloc((1) * sizeof (int *));
+	game->colect->img = (void **)malloc((1) * sizeof (int *));
+	game->exit->img = (void **)malloc((1) * sizeof (int *));
+	if (!game->floor->addr || !game->player->addr || !game->wall->addr
+		|| !game->colect->addr || !game->exit->addr || !game->floor->img
+		|| !game->player->img || !game->exit->img || !game->colect->img
+		|| !game->wall->img)
+		ft_set_shutdown(0, game, "Error\nError allocating memory.");
 }

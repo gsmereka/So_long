@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 22:12:25 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/11 23:39:24 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/15 13:40:54 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	can_walk(t_data *game, int x, int y);
 static int	walk(int dir, t_data *game, char axis);
+static void	move_player(t_data *game, int dir, char axis);
 
 int	ft_set_commands(int keysym, t_data *game)
 {
@@ -46,21 +47,19 @@ static int	walk(int dir, t_data *game, char axis)
 	y = game->player->y / 80;
 	if (axis == 'y')
 	{
+		game->player->frame = 1 + dir;
 		if (can_walk(game, x, y + dir) == 1)
-		{
-			game->player->y += game->player->speed * dir;
-			game->player->moves++;
-		}
+			move_player(game, dir, 'y');
 	}
 	if (axis == 'x')
 	{
+		game->player->frame = 2 + dir;
 		if (can_walk(game, x + dir, y) == 1)
-		{
-			game->player->x += game->player->speed * dir;
-			game->player->moves++;
-		}
+			move_player(game, dir, 'x');
 	}
-	printf("Passos: %d (x=%d,y=%d)\n", game->player->moves, x, y);
+	ft_putstr_fd("Passos: ", 1);
+	ft_putnbr_fd(game->map->player_moves, 1);
+	ft_putstr_fd("\n", 1);
 	return (0);
 }
 
@@ -70,17 +69,40 @@ static int	can_walk(t_data *game, int x, int y)
 	{
 		if (game->map->grid[y][x] == game->map->objects->colect)
 		{
-			game->map->objects->max_collectable--;
-			game->map->grid[y][x] = game->map->objects->empty;
+			game->map->objects->n_collectibles--;
 			return (1);
 		}
 		else if (game->map->grid[y][x] == game->map->objects->exit)
 		{
-			if (game->map->objects->max_collectable == 0)
-				ft_set_shutdown(1, game, "Congratulations!!!\n");
+			if (game->map->objects->n_collectibles == 0)
+				ft_set_shutdown(1, game, "");
+			return (0);
 		}
 		else
 			return (1);
 	}
 	return (0);
+}
+
+static void	move_player(t_data *game, int dir, char axis)
+{
+	int	x;
+	int	y;
+
+	x = game->player->x / 80;
+	y = game->player->y / 80;
+	if (axis == 'x')
+	{
+		game->map->grid[y][x] = '0';
+		game->player->x = (x + dir) * 80;
+		game->map->grid[y][x + dir] = 'P';
+		game->map->player_moves++;
+	}
+	else if (axis == 'y')
+	{
+		game->map->grid[y][x] = '0';
+		game->player->y = (y + dir) * 80;
+		game->map->grid[y + dir][x] = 'P';
+		game->map->player_moves++;
+	}
 }

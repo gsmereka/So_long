@@ -14,14 +14,14 @@
 
 static void	ft_create_player(t_data *game);
 static void	ft_create_wall(t_data *game);
-static void	ft_create_coin(t_data *game);
+static void	ft_create_colect(t_data *game);
 static void	ft_create_exit(t_data *game);
 
 void	ft_set_objects(t_data *game)
 {
 	ft_create_wall(game);
 	ft_create_exit(game);
-	ft_create_coin(game);
+	ft_create_colect(game);
 	ft_create_player(game);
 }
 
@@ -31,11 +31,8 @@ static void	ft_create_player(t_data *game)
 	int	y;
 
 	y = 0;
-	game->player->moves = 0;
-	game->player->largura = 80;
-	game->player->altura = 80;
-	game->player->speed = 80;
-	game->player->cor = RED_PIXEL;
+	game->player->frame = 2;
+	game->player->size = 80;
 	while (y < game->map->lin)
 	{
 		x = 0;
@@ -43,8 +40,8 @@ static void	ft_create_player(t_data *game)
 		{
 			if (game->map->grid[y][x] == game->map->objects->start)
 			{
-				game->player->x = x * game->player->largura;
-				game->player->y = y * game->player->altura;
+				game->player->x = x * game->player->size;
+				game->player->y = y * game->player->size;
 			}
 			x++;
 		}
@@ -56,25 +53,19 @@ static void	ft_create_wall(t_data *game)
 {
 	game->wall->x = 0;
 	game->wall->y = 0;
-	game->wall->largura = 80;
-	game->wall->altura = 80;
-	game->wall->cor = BLACK_PIXEL;
+	game->wall->size = 80;
 }
 
 static void	ft_create_exit(t_data *game)
 {
 	game->exit->x = 0;
 	game->exit->y = 0;
-	game->exit->largura = 80;
-	game->exit->altura = 80;
-	game->exit->cor = NAVY_BLUE;
+	game->exit->size = 80;
 }
 
-static void	ft_create_coin(t_data *game)
+static void	ft_create_colect(t_data *game)
 {
-	game->coin->x = 0;
-	game->coin->y = 0;
-	game->coin->largura = 80;
-	game->coin->altura = 80;
-	game->coin->cor = GREEN_YELLOW;
+	game->colect->x = 0;
+	game->colect->y = 0;
+	game->colect->size = 80;
 }
