@@ -6,11 +6,11 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 16:31:47 by rinacio           #+#    #+#             */
-/*   Updated: 2022/10/14 14:35:03 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/15 23:29:17 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/data.h"
+#include "../header/so_long.h"
 
 size_t	ft_strlen(const char *s)
 {

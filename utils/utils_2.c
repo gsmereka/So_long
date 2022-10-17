@@ -6,11 +6,11 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 21:34:43 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/14 14:34:49 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/15 23:29:13 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/data.h"
+#include "../header/so_long.h"
 
 static int	ft_calculate_size(int n);
 static void	ft_print_n(int size, int n, int fd);

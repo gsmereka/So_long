@@ -6,17 +6,17 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 22:12:25 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/15 13:40:54 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/17 15:25:38 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/data.h"
+#include "../header/so_long.h"
 
 static int	can_walk(t_data *game, int x, int y);
 static int	walk(int dir, t_data *game, char axis);
 static void	move_player(t_data *game, int dir, char axis);
 
-int	ft_set_commands(int keysym, t_data *game)
+int	set_commands(int keysym, t_data *game)
 {
 	int		direction;
 	char	axis_x;
@@ -26,7 +26,7 @@ int	ft_set_commands(int keysym, t_data *game)
 	axis_x = 'x';
 	axis_y = 'y';
 	if (keysym == XK_Escape)
-		ft_set_shutdown(1, game, "See you soon!!!\n");
+		set_shutdown(1, game, "See you soon!!!\n");
 	if (keysym == XK_w)
 		walk(-direction, game, axis_y);
 	else if (keysym == XK_s)
@@ -57,7 +57,7 @@ static int	walk(int dir, t_data *game, char axis)
 		if (can_walk(game, x + dir, y) == 1)
 			move_player(game, dir, 'x');
 	}
-	ft_putstr_fd("Passos: ", 1);
+	ft_putstr_fd("Steps: ", 1);
 	ft_putnbr_fd(game->map->player_moves, 1);
 	ft_putstr_fd("\n", 1);
 	return (0);
@@ -75,7 +75,7 @@ static int	can_walk(t_data *game, int x, int y)
 		else if (game->map->grid[y][x] == game->map->objects->exit)
 		{
 			if (game->map->objects->n_collectibles == 0)
-				ft_set_shutdown(1, game, "");
+				set_shutdown(1, game, "");
 			return (0);
 		}
 		else

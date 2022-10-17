@@ -6,11 +6,11 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 22:38:40 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/13 11:31:08 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/15 23:28:27 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/data.h"
+#include "../header/so_long.h"
 
 void	find_player(t_check *valid_path, t_data *game)
 {
@@ -63,6 +63,8 @@ void	set_check_variables(t_check *valid_path, t_data *game)
 	valid_path->exit = 0;
 	valid_path->grid = (char **)malloc((valid_path->max_lines + 1)
 			* sizeof (int *));
+	if (!valid_path->grid)
+		set_shutdown(0, game, "Error\nFail to alloc memory\n");
 	while (i < valid_path->max_lines + 1)
 	{
 		valid_path->grid[i] = NULL;
@@ -70,7 +72,7 @@ void	set_check_variables(t_check *valid_path, t_data *game)
 	}
 }
 
-void	free_grid(t_check *valid_path)
+void	free_check_grid(t_check *valid_path)
 {
 	int		i;
 

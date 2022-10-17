@@ -6,16 +6,16 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:13:01 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/14 19:47:22 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/16 01:34:27 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/data.h"
+#include "../header/so_long.h"
 
 static int	draw_map(t_data *game);
 static void	draw(int i, int j, t_data *game, char object);
 
-int	ft_set_images(t_data *game)
+int	set_images(t_data *game)
 {
 	draw_map(game);
 	return (0);
@@ -52,23 +52,15 @@ static int	draw_map(t_data *game)
 static void	draw(int i, int j, t_data *game, char object)
 {
 	if (object == 'f')
-	{
-		ft_draw_floor(i, j, game);
-	}
+		draw_sprite(i, j, game->floor, game->win);
 	if (object == 'P')
 	{
-		ft_draw_player(i, j, game);
+		draw_player(i, j, game);
 	}
 	if (object == 'w')
-	{
-		ft_draw_wall(i, j, game);
-	}
-	else if (object == 'e')
-	{
-		ft_draw_exit(i, j, game);
-	}
-	else if (object == 'c')
-	{
-		ft_draw_colect(i, j, game);
-	}
+		draw_sprite(i, j, game->wall, game->win);
+	if (object == 'e')
+		draw_sprite(i, j, game->exit, game->win);
+	if (object == 'c')
+		draw_sprite(i, j, game->colect, game->win);
 }

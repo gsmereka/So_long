@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/data.h"
+#include "../header/so_long.h"
 
 static void	set_variables(t_data *game, t_config *config);
 static void	init_sprites_values(t_sprites *sprites);
 
-void	ft_set_values(t_data *game, t_config *config)
+void	set_values(t_data *game, t_config *config)
 {
 	set_variables(game, config);
 	game->floor->n_frames = 1;
@@ -23,6 +23,7 @@ void	ft_set_values(t_data *game, t_config *config)
 	game->colect->n_frames = 1;
 	game->exit->n_frames = 1;
 	game->player->n_frames = 4;
+	game->player->size = 80;
 	init_sprites_values(game->wall);
 	init_sprites_values(game->floor);
 	init_sprites_values(game->exit);

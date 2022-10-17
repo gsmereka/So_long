@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/data.h"
+#include "../header/so_long.h"
 
-static int	ft_check_objects(t_map *map);
+static int	check_objects(t_map *map);
 
-int	ft_check_walls(t_data *game)
+int	check_walls(t_data *game)
 {
 	int	i;
 	int	j;
@@ -27,7 +27,7 @@ int	ft_check_walls(t_data *game)
 	{
 		if (game->map->grid[0][i] != wall ||
 		game->map->grid[game->map->lin - 1][i] != wall)
-			ft_set_shutdown(0, game,
+			set_shutdown(0, game,
 				"Error\nThe map needs to be surrounded by walls.\n");
 		i++;
 	}
@@ -35,42 +35,42 @@ int	ft_check_walls(t_data *game)
 	{
 		if (game->map->grid[j][0] != wall ||
 			game->map->grid[j][game->map->col - 1] != wall)
-			ft_set_shutdown(0, game,
+			set_shutdown(0, game,
 				"Error\nThe map needs to be surrounded by walls.\n");
 		j++;
 	}
 	return (0);
 }
 
-int	ft_check_composition(t_data *game)
+int	check_composition(t_data *game)
 {
 	int	invalid_char;
 
-	invalid_char = ft_check_objects(game->map);
+	invalid_char = check_objects(game->map);
 	if (invalid_char > 0)
-		ft_set_shutdown(0, game, "Error\nThe map have an invalid character.\n");
+		set_shutdown(0, game, "Error\nThe map have an invalid character.\n");
 	if (game->map->objects->n_players != 1)
-		ft_set_shutdown(0, game, "Error\nThe map need exactly 1 player.\n");
+		set_shutdown(0, game, "Error\nThe map need exactly 1 player.\n");
 	if (game->map->objects->n_collectibles < 1)
-		ft_set_shutdown(0, game, "Error\nThe map need at least 1 collectible.\n");
+		set_shutdown(0, game, "Error\nThe map need at least 1 collectible.\n");
 	if (game->map->objects->n_exits != 1)
-		ft_set_shutdown(0, game, "Error\nThe map need exactly 1 exit.\n");
+		set_shutdown(0, game, "Error\nThe map need exactly 1 exit.\n");
 	return (0);
 }
 
-int	ft_check_path(t_data *game)
+int	check_path(t_data *game)
 {
 	t_check	valid_path;
 
-	ft_set_path_check(game, &valid_path);
+	set_path_check(game, &valid_path);
 	if (valid_path.coins != game->map->objects->n_collectibles)
-		ft_set_shutdown(0, game, "Error\nIt is impossible to pass this map.\n");
+		set_shutdown(0, game, "Error\nSomething is blocking the exit.\n");
 	if (valid_path.exit != game->map->objects->n_exits)
-		ft_set_shutdown(0, game, "Error\nIt is impossible to pass this map.\n");
+		set_shutdown(0, game, "Error\nSomething is blocking the exit.\n");
 	return (0);
 }
 
-static int	ft_check_objects(t_map *map)
+static int	check_objects(t_map *map)
 {
 	int	i;
 	int	j;

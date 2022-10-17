@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/data.h"
+#include "../header/so_long.h"
 
-void	ft_set_sprites(t_data *game)
+void	set_sprites(t_data *game)
 {
 	game->floor->addr[0] = ft_strdup("./sprites/floor.xpm");
-	game->colect->addr[0] = ft_strdup("./sprites/cristal_1.xpm");
-	game->wall->addr[0] = ft_strdup("./sprites/wall_14.xpm");
-	game->exit->addr[0] = ft_strdup("./sprites/closed_exit.xpm");
+	game->colect->addr[0] = ft_strdup("./sprites/potion.xpm");
+	game->wall->addr[0] = ft_strdup("./sprites/wall.xpm");
+	game->exit->addr[0] = ft_strdup("./sprites/portal_0.xpm");
 	game->player->addr[0] = ft_strdup("./sprites/mage_up.xpm");
 	game->player->addr[1] = ft_strdup("./sprites/mage_left.xpm");
 	game->player->addr[2] = ft_strdup("./sprites/mage_down.xpm");

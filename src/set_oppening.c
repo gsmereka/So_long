@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/data.h"
+#include "../header/so_long.h"
 
-static void	ft_set_sprites_memory(t_data *game);
-static void	ft_set_memory(t_data *game, t_config *config);
-static void	ft_set_config(t_config *config);
+static void	set_sprites_memory(t_data *game);
+static void	set_memory(t_data *game, t_config *config);
+static void	set_config(t_config *config);
 
-void	ft_set_oppening(t_data *game, t_config *config)
+void	set_oppening(t_data *game, t_config *config)
 {
-	ft_set_config(config);
-	ft_set_memory(game, config);
-	ft_set_sprites_memory(game);
+	set_config(config);
+	set_memory(game, config);
+	set_sprites_memory(game);
 }
 
-static void	ft_set_config(t_config *config)
+static void	set_config(t_config *config)
 {
 	config->start = 'P';
 	config->wall = '1';
@@ -34,7 +34,7 @@ static void	ft_set_config(t_config *config)
 	config->max_cols = 16;
 }
 
-static void	ft_set_memory(t_data *game, t_config *config)
+static void	set_memory(t_data *game, t_config *config)
 {
 	game->win = malloc(sizeof(t_window));
 	game->map = malloc(sizeof(t_map));
@@ -48,10 +48,10 @@ static void	ft_set_memory(t_data *game, t_config *config)
 	if (!game->win || !game->map || !game->map->grid
 		|| !game->map->objects || !game->floor || !game->player || !game->wall
 		|| !game->colect || !game->exit)
-		ft_set_shutdown(0, game, "Error\nError allocating memory.");
+		set_shutdown(0, game, "Error\nError allocating memory.");
 }
 
-static void	ft_set_sprites_memory(t_data *game)
+static void	set_sprites_memory(t_data *game)
 {
 	game->floor->addr = (char **)malloc((1) * sizeof (int *));
 	game->player->addr = (char **)malloc((4) * sizeof (int *));
@@ -67,5 +67,5 @@ static void	ft_set_sprites_memory(t_data *game)
 		|| !game->colect->addr || !game->exit->addr || !game->floor->img
 		|| !game->player->img || !game->exit->img || !game->colect->img
 		|| !game->wall->img)
-		ft_set_shutdown(0, game, "Error\nError allocating memory.");
+		set_shutdown(0, game, "Error\nError allocating memory.");
 }

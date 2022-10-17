@@ -6,16 +6,16 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:34:20 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/13 13:16:55 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/15 23:28:30 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/data.h"
+#include "../header/so_long.h"
 
-static int	ft_paint_the_check(int x, int y, t_check *valid_path, t_data *game);
-static int	ft_paint(t_check *valid_path, int x, int y);
+static int	paint_the_check(int x, int y, t_check *valid_path, t_data *game);
+static int	paint(t_check *valid_path, int x, int y);
 
-int	ft_set_path_check(t_data *game, t_check *valid_path)
+int	set_path_check(t_data *game, t_check *valid_path)
 {
 	int	x;
 	int	y;
@@ -26,25 +26,25 @@ int	ft_set_path_check(t_data *game, t_check *valid_path)
 	y = valid_path->player_y;
 	x = valid_path->player_x;
 	valid_path->grid[y][x] = ' ';
-	ft_paint_the_check(x, y, valid_path, game);
-	free_grid(valid_path);
+	paint_the_check(x, y, valid_path, game);
+	free_check_grid(valid_path);
 	return (0);
 }
 
-static int	ft_paint_the_check(int x, int y, t_check *valid_path, t_data *game)
+static int	paint_the_check(int x, int y, t_check *valid_path, t_data *game)
 {
-	if (ft_paint(valid_path, x + 1, y) == 1)
-		ft_paint_the_check(x + 1, y, valid_path, game);
-	if (ft_paint(valid_path, x - 1, y) == 1)
-		ft_paint_the_check(x - 1, y, valid_path, game);
-	if (ft_paint(valid_path, x, y + 1) == 1)
-		ft_paint_the_check(x, y + 1, valid_path, game);
-	if (ft_paint(valid_path, x, y - 1) == 1)
-		ft_paint_the_check(x, y - 1, valid_path, game);
+	if (paint(valid_path, x + 1, y) == 1)
+		paint_the_check(x + 1, y, valid_path, game);
+	if (paint(valid_path, x - 1, y) == 1)
+		paint_the_check(x - 1, y, valid_path, game);
+	if (paint(valid_path, x, y + 1) == 1)
+		paint_the_check(x, y + 1, valid_path, game);
+	if (paint(valid_path, x, y - 1) == 1)
+		paint_the_check(x, y - 1, valid_path, game);
 	return (0);
 }
 
-static int	ft_paint(t_check *valid_path, int x, int y)
+static int	paint(t_check *valid_path, int x, int y)
 {
 	if (valid_path->grid[y][x] == '1')
 		return (0);

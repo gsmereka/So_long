@@ -10,11 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/data.h"
+#include "../header/so_long.h"
 
 static void	closing_window(int close_window, t_data *game);
+static void	free_grid(t_map *map);
 
-void	ft_set_shutdown(int close_window, t_data *game, char *error_msg)
+void	set_shutdown(int close_window, t_data *game, char *error_msg)
 {
 	ft_putstr_fd(error_msg, 1);
 	closing_window(close_window, game);
@@ -51,14 +52,29 @@ static void	closing_window(int close_window, t_data *game)
 
 void	free_structures(t_data *game)
 {
-	free_images(game->exit);
 	free_images(game->colect);
+	free_images(game->exit);
 	free_images(game->wall);
 	free_images(game->player);
 	free_images(game->floor);
-	ft_free_grid(game->map);
+	free_grid(game->map);
 	free(game->map->objects);
 	free(game->map->addr);
 	free(game->map);
 	free(game->win);
+}
+
+static void	free_grid(t_map *map)
+{
+	int		i;
+	char	**grid;
+
+	i = map->max_lines;
+	while (i >= 0)
+	{
+		free(map->grid[i]);
+		i--;
+	}
+	grid = map->grid;
+	free(grid);
 }

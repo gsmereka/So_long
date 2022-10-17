@@ -10,26 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/data.h"
-
-void	ft_free_grid(t_map *map)
-{
-	int		i;
-	char	**grid;
-
-	i = map->max_lines;
-	while (i >= 0)
-	{
-		free(map->grid[i]);
-		i--;
-	}
-	grid = map->grid;
-	free(grid);
-}
+#include "../header/so_long.h"
 
 int	close_window(t_data *game)
 {
-	ft_set_shutdown(1, game, "");
+	set_shutdown(1, game, "");
 	return (0);
 }
 
