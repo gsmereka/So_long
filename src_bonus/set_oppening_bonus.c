@@ -59,14 +59,14 @@ static void	set_sprites_memory(t_data *game)
 	game->floor->addr = (char **)malloc((1) * sizeof (int *));
 	game->player->addr = (char **)malloc((4) * sizeof (int *));
 	game->board->addr = (char **)malloc((4) * sizeof (int *));
-	game->enemy->addr = (char **)malloc((1) * sizeof (int *));
+	game->enemy->addr = (char **)malloc((4) * sizeof (int *));
 	game->wall->addr = (char **)malloc((1) * sizeof (int *));
 	game->colect->addr = (char **)malloc((1) * sizeof (int *));
 	game->exit->addr = (char **)malloc((5) * sizeof (int *));
 	game->floor->img = (void **)malloc((1) * sizeof (int *));
 	game->player->img = (void **)malloc((4) * sizeof (int *));
 	game->board->img = (void **)malloc((4) * sizeof (int *));
-	game->enemy->img = (void **)malloc((1) * sizeof (int *));
+	game->enemy->img = (void **)malloc((4) * sizeof (int *));
 	game->wall->img = (void **)malloc((1) * sizeof (int *));
 	game->colect->img = (void **)malloc((1) * sizeof (int *));
 	game->exit->img = (void **)malloc((5) * sizeof (int *));

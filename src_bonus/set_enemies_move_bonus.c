@@ -12,8 +12,8 @@
 
 #include "../header_bonus/so_long_bonus.h"
 
-void	select_enemies(t_data *game);
-void	move_enemy(char *pos, t_data *game);
+static void	select_enemies(t_data *game);
+static void	move_enemy(char *pos, t_data *game);
 
 void	set_enemies_move(t_data *game)
 {
@@ -27,7 +27,7 @@ void	set_enemies_move(t_data *game)
 	time++;
 }
 
-void	select_enemies(t_data *game)
+static void	select_enemies(t_data *game)
 {
 	int	i;
 
@@ -39,7 +39,7 @@ void	select_enemies(t_data *game)
 	}
 }
 
-void	move_enemy(char *pos, t_data *game)
+static void	move_enemy(char *pos, t_data *game)
 {
 	int	x;
 	int	y;

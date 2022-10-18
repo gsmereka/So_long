@@ -25,7 +25,7 @@ void	set_values(t_data *game, t_config *config)
 	game->exit->n_frames = 5;
 	game->player->n_frames = 4;
 	game->board->n_frames = 4;
-	game->enemy->n_frames = 1;
+	game->enemy->n_frames = 4;
 	game->player->size = 80;
 	set_frames(game);
 	init_sprites_values(game->wall);

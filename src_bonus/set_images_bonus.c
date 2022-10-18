@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:13:01 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/17 13:49:17 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/18 09:29:45 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int	set_images(t_data *game)
 	if (game->map->objects->n_collectibles == 0)
 		animate_sprites(game->exit);
 	if (game->map->objects->n_enemies > 0)
+	{
+		animate_enemies_sprites(game);
 		set_enemies_move(game);
+	}
 	draw_steps(game);
 	draw_board(game);
 	draw_map(game);

@@ -64,6 +64,7 @@ int		set_images(t_data *game);
 void	draw_sprite(int y, int x, t_sprites *sprite, t_window *win);
 void	draw_player(int y, int x, t_data *game);
 void	draw(int i, int j, t_data *game, char object);
+void	animate_enemies_sprites(t_data *game);
 // utils
 char	*get_next_line(int fd, int stop);
 size_t	ft_strlen(const char *s);
