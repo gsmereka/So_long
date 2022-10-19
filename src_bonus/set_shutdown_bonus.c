@@ -52,7 +52,7 @@ void	free_structures(int close_window, t_data *game)
 	free_images(game->enemy);
 	free_images(game->board);
 	free_images(game->floor);
-	free_grid(game->map->grid, game->map->lin);
+	free_grid(game->map->grid, game->map->max_lines - 1);
 	free(game->map->player_steps);
 	free(game->map->objects);
 	free(game->map->addr);

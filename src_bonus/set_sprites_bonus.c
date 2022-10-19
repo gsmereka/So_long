@@ -28,10 +28,7 @@ void	set_sprites(t_data *game)
 	game->player->addr[1] = ft_strdup("./sprites/mage_left.xpm");
 	game->player->addr[2] = ft_strdup("./sprites/mage_down.xpm");
 	game->player->addr[3] = ft_strdup("./sprites/mage_right.xpm");
-	game->board->addr[0] = ft_strdup("./sprites/steps_up.xpm");
-	game->board->addr[1] = ft_strdup("./sprites/steps_left.xpm");
-	game->board->addr[2] = ft_strdup("./sprites/steps_down.xpm");
-	game->board->addr[3] = ft_strdup("./sprites/steps_right.xpm");
+	game->board->addr[0] = ft_strdup("./sprites/board.xpm");
 	set_enemies_sprites(game);
 }
 

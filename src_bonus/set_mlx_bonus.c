@@ -57,5 +57,4 @@ static void	set_hook(t_data *game)
 	mlx_hook(game->win->ptr_win, KeyPress,
 		KeyPressMask, &set_commands, game);
 	mlx_loop_hook(game->win->ptr_mlx, &set_images, game);
-	mlx_expose_hook(game->win->ptr_win, &set_images, game);
 }

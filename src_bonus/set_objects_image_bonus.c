@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 15:07:00 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/18 09:17:24 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/18 23:57:24 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,19 +83,11 @@ static void	set_exit_img(t_data *game)
 
 static void	set_board_img(t_data *game)
 {
-	int	corners;
-	int	up_down;
-	int	dense;
+	int	x;
+	int	y;
 
-	corners = 40;
-	up_down = 160;
-	dense = 20;
+	x = 160;
+	y = 80;
 	game->board->img[0] = mlx_xpm_file_to_image(game->win->ptr_mlx,
-			game->board->addr[0], &up_down, &dense);
-	game->board->img[1] = mlx_xpm_file_to_image(game->win->ptr_mlx,
-			game->board->addr[1], &dense, &corners);
-	game->board->img[2] = mlx_xpm_file_to_image(game->win->ptr_mlx,
-			game->board->addr[2], &up_down, &dense);
-	game->board->img[3] = mlx_xpm_file_to_image(game->win->ptr_mlx,
-			game->board->addr[3], &dense, &corners);
+			game->board->addr[0], &x, &y);
 }

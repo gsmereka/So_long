@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:13:01 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/18 09:29:45 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/19 00:06:10 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	set_images(t_data *game)
 		animate_enemies_sprites(game);
 		set_enemies_move(game);
 	}
-	draw_steps(game);
 	draw_board(game);
+	draw_steps(game);
 	draw_map(game);
 	return (0);
 }
@@ -37,21 +37,7 @@ int	set_images(t_data *game)
 static void	draw_steps(t_data *game)
 {
 	char	*steps;
-	int		x;
-	int		y;
 
-	y = 30;
-	while (y <= 45)
-	{
-		x = 160;
-		while (x <= 200)
-		{
-			mlx_pixel_put(game->win->ptr_mlx,
-				game->win->ptr_win, x, y, 0x000000);
-			x++;
-		}
-		y++;
-	}
 	steps = game->map->player_steps;
 	mlx_string_put(game->win->ptr_mlx,
 		game->win->ptr_win, 120, 45, 0xFFFFFF, "Steps:");
@@ -64,15 +50,6 @@ static void	draw_board(t_data *game)
 	mlx_put_image_to_window(game->win->ptr_mlx,
 		game->win->ptr_win, game->board->img[0],
 		80, 0);
-	mlx_put_image_to_window(game->win->ptr_mlx,
-		game->win->ptr_win, game->board->img[2],
-		80, 60);
-	mlx_put_image_to_window(game->win->ptr_mlx,
-		game->win->ptr_win, game->board->img[1],
-		80, 20);
-	mlx_put_image_to_window(game->win->ptr_mlx,
-		game->win->ptr_win, game->board->img[3],
-		220, 20);
 }
 
 static void	draw_map(t_data *game)
