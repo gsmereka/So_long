@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 12:43:35 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/18 10:15:07 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/19 00:33:23 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	animate_enemies_sprites(t_data *game)
 	static int	change;
 	static int	speed;
 
-	if (speed == 4)
+	if (speed == 150)
 	{
 		if (change < 3)
 		{

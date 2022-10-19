@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:13:01 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/19 00:06:10 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/19 00:33:12 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	animate_sprites(t_sprites *sprite)
 {
 	static int	frame;
 
-	if (frame == 2)
+	if (frame == 100)
 	{
 		if (sprite->frame == 4)
 			sprite->frame = 1;

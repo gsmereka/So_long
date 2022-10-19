@@ -19,7 +19,7 @@ void	set_enemies_move(t_data *game)
 {
 	static int	time;
 
-	if (time == 10)
+	if (time == 700)
 	{
 		select_enemies(game);
 		time = 0;
