@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 12:43:35 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/19 00:33:23 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/19 16:41:12 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,27 +51,4 @@ void	draw(int i, int j, t_data *game, char object)
 		draw_sprite(i, j, game->exit, game->win);
 	if (object == 'c')
 		draw_sprite(i, j, game->colect, game->win);
-}
-
-void	animate_enemies_sprites(t_data *game)
-{
-	static int	change;
-	static int	speed;
-
-	if (speed == 150)
-	{
-		if (change < 3)
-		{
-			game->enemy->frame++;
-		}
-		else if (change >= 3)
-		{
-			game->enemy->frame--;
-		}
-		change++;
-		if (change == 6)
-			change = 0;
-		speed = 0;
-	}
-	speed++;
 }

@@ -41,7 +41,7 @@ static int	create_window(t_data *game)
 	if (game->win->ptr_mlx == NULL)
 		set_shutdown(2, game, "Error\nError initializing mlx\n");
 	game->win->ptr_win = mlx_new_window(game->win->ptr_mlx, game->win->width,
-			game->win->height, "Retrieve the crystals and get out of there!");
+			game->win->height, "Retrieve the potions and get out of there!");
 	if (game->win->ptr_win == NULL)
 	{
 		free(game->win->ptr_win);

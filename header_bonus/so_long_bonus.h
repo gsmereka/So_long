@@ -13,6 +13,7 @@
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
 
+# include <time.h>
 # include <stdlib.h>
 # include <mlx.h>
 # include <X11/X.h>
@@ -55,16 +56,17 @@ int		set_commands(int keysym, t_data *game);
 // set_enemies
 void	set_enemies(t_data *game);
 // set_enemies_move
-void	set_enemies_move(t_data *game);
+void	set_enemies_move(t_data *game, float time);
 // set_steps_to_char
 void	set_steps_to_char(t_data *game);
+// set_animations
+int		set_animations(t_data *game);
 // set_images
 int		set_images(t_data *game);
 // set_images_tolls
 void	draw_sprite(int y, int x, t_sprites *sprite, t_window *win);
 void	draw_player(int y, int x, t_data *game);
 void	draw(int i, int j, t_data *game, char object);
-void	animate_enemies_sprites(t_data *game);
 // utils
 char	*get_next_line(int fd, int stop);
 size_t	ft_strlen(const char *s);

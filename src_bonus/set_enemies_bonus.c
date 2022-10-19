@@ -12,7 +12,7 @@
 
 #include "../header_bonus/so_long_bonus.h"
 
-static void	save_enemies_pos(t_data *game);
+void	save_enemies_pos(t_data *game);
 
 void	set_enemies(t_data *game)
 {
@@ -23,7 +23,7 @@ void	set_enemies(t_data *game)
 	save_enemies_pos(game);
 }
 
-static void	save_enemies_pos(t_data *game)
+void	save_enemies_pos(t_data *game)
 {
 	int	y;
 	int	x;

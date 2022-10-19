@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:13:01 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/19 00:33:12 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/19 16:45:51 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,13 @@
 
 static void	draw_map(t_data *game);
 static void	draw_steps(t_data *game);
-static void	animate_sprites(t_sprites *sprite);
 static void	draw_board(t_data *game);
 
 int	set_images(t_data *game)
 {
 	game->map->grid[0][1] = 'S';
 	game->map->grid[0][2] = 'S';
-	if (game->map->objects->n_collectibles == 0)
-		animate_sprites(game->exit);
-	if (game->map->objects->n_enemies > 0)
-	{
-		animate_enemies_sprites(game);
-		set_enemies_move(game);
-	}
+	set_animations(game);
 	draw_board(game);
 	draw_steps(game);
 	draw_map(game);
@@ -79,18 +72,4 @@ static void	draw_map(t_data *game)
 		}
 		i++;
 	}
-}
-
-static void	animate_sprites(t_sprites *sprite)
-{
-	static int	frame;
-
-	if (frame == 100)
-	{
-		if (sprite->frame == 4)
-			sprite->frame = 1;
-		sprite->frame++;
-		frame = 0;
-	}
-	frame++;
 }

@@ -15,16 +15,15 @@
 static void	select_enemies(t_data *game);
 static void	move_enemy(char *pos, t_data *game);
 
-void	set_enemies_move(t_data *game)
+void	set_enemies_move(t_data *game, float last_time)
 {
-	static int	time;
+	static float	now;
 
-	if (time == 700)
+	if (last_time - (float)now > 300000)
 	{
 		select_enemies(game);
-		time = 0;
+		now = last_time;
 	}
-	time++;
 }
 
 static void	select_enemies(t_data *game)
