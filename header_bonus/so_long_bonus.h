@@ -56,7 +56,7 @@ int		set_commands(int keysym, t_data *game);
 // set_enemies
 void	set_enemies(t_data *game);
 // set_enemies_move
-void	set_enemies_move(t_data *game, float time);
+void	set_enemies_move(t_data *game, int time);
 // set_steps_to_char
 void	set_steps_to_char(t_data *game);
 // set_animations

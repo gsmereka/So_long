@@ -12,27 +12,27 @@
 
 #include "../header_bonus/so_long_bonus.h"
 
-static void	animate_portal_sprites(t_sprites *sprite, float time);
-static void	animate_enemies_sprites(t_data *game, float time);
+static void	animate_portal_sprites(t_sprites *sprite, int time);
+static void	animate_enemies_sprites(t_data *game, int time);
 
 int	set_animations(t_data *game)
 {
-	clock_t	teste;
+	clock_t	time;
 
-	teste = clock();
+	time = clock();
 	if (game->map->objects->n_enemies > 0)
 	{
-		animate_enemies_sprites(game, (float)teste);
-		set_enemies_move(game, (float)teste);
+		animate_enemies_sprites(game, time);
+		set_enemies_move(game, time);
 	}
 	if (game->map->objects->n_collectibles == 0)
-		animate_portal_sprites(game->exit, (float)teste);
+		animate_portal_sprites(game->exit, time);
 	return (0);
 }
 
-static void	animate_portal_sprites(t_sprites *sprite, float last_time)
+static void	animate_portal_sprites(t_sprites *sprite, int last_time)
 {
-	static float	now;
+	static int	now;
 
 	if (last_time - now > 60000)
 	{
@@ -43,10 +43,10 @@ static void	animate_portal_sprites(t_sprites *sprite, float last_time)
 	}
 }
 
-static void	animate_enemies_sprites(t_data *game, float last_time)
+static void	animate_enemies_sprites(t_data *game, int last_time)
 {
 	static int		change;
-	static float	now;
+	static int		now;
 
 	if (last_time - now > 60000)
 	{
