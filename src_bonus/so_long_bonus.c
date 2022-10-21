@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 11:30:38 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/18 09:10:40 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/21 00:15:50 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	main(int argc, char *argv[])
 	set_map_file(argc, argv[1], &game);
 	set_sprites(&game);
 	set_map(&game);
-	set_enemies(&game);
 	set_objects(&game);
 	set_mlx(&game);
 	mlx_loop(game.win->ptr_mlx);

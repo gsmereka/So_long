@@ -12,43 +12,44 @@
 
 #include "../header_bonus/so_long_bonus.h"
 
-static void	animate_portal_sprites(t_sprites *sprite, int time);
-static void	animate_enemies_sprites(t_data *game, int time);
+static void	animate_portal_sprites(t_sprites *sprite);
+static void	animate_enemies_sprites(t_data *game);
 
 int	set_animations(t_data *game)
 {
-	clock_t	time;
-
-	time = clock();
 	if (game->map->objects->n_enemies > 0)
 	{
-		animate_enemies_sprites(game, time);
-		set_enemies_move(game, time);
+		animate_enemies_sprites(game);
+		set_enemies_move(game);
 	}
 	if (game->map->objects->n_collectibles == 0)
-		animate_portal_sprites(game->exit, time);
+		animate_portal_sprites(game->exit);
 	return (0);
 }
 
-static void	animate_portal_sprites(t_sprites *sprite, int last_time)
+static void	animate_portal_sprites(t_sprites *sprite)
 {
-	static int	now;
+	clock_t		now;
+	static int	save;
 
-	if (last_time - now > 60000)
+	now = clock();
+	if (now - save > 50000)
 	{
 		if (sprite->frame == 4)
 			sprite->frame = 1;
 		sprite->frame++;
-		now = last_time;
+		save = now;
 	}
 }
 
-static void	animate_enemies_sprites(t_data *game, int last_time)
+static void	animate_enemies_sprites(t_data *game)
 {
-	static int		change;
-	static int		now;
+	static int	change;
+	clock_t		now;
+	static int	save;
 
-	if (last_time - now > 60000)
+	now = clock();
+	if (now - save > 50000)
 	{
 		if (change < 3)
 		{
@@ -61,6 +62,6 @@ static void	animate_enemies_sprites(t_data *game, int last_time)
 		change++;
 		if (change == 6)
 			change = 0;
-		now = last_time;
+		save = now;
 	}
 }

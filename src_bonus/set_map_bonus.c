@@ -54,7 +54,7 @@ static void	count_col(t_data *game)
 	int	cols_nmb;
 
 	lines = game->map->lin;
-	cols_nmb = (int)strlen(game->map->grid[lines - 1]);
+	cols_nmb = (int)ft_strlen(game->map->grid[lines - 1]);
 	if (cols_nmb < 3)
 		set_shutdown(0, game,
 			"Error\nThe map has less than 3 columns.\n");
@@ -73,7 +73,7 @@ static void	check_format(t_data *game)
 	last_line = game->map->lin;
 	while (i < last_line - 1)
 	{
-		cols = (int)strlen(game->map->grid[i]);
+		cols = (int)ft_strlen(game->map->grid[i]);
 		if (cols != game->map->col + 1)
 			set_shutdown(0, game, "Error\nthe map is not rectangular.\n");
 		i++;

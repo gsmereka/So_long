@@ -12,14 +12,15 @@
 
 #include "../header_bonus/so_long_bonus.h"
 
-static void	create_player(t_data *game);
+static void	set_player(t_data *game);
 
 void	set_objects(t_data *game)
 {
-	create_player(game);
+	set_player(game);
+	set_enemies(game);
 }
 
-static void	create_player(t_data *game)
+static void	set_player(t_data *game)
 {
 	int	x;
 	int	y;

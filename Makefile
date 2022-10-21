@@ -6,7 +6,7 @@
 #    By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/30 22:11:38 by lbiasuz           #+#    #+#              #
-#    Updated: 2022/10/19 12:20:28 by gsmereka         ###   ########.fr        #
+#    Updated: 2022/10/21 02:25:04 by gsmereka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	=	so_long
 
 NAME_B	=	so_long_bonus
 
-CFLAGS	=	
+CFLAGS	=	-Wall -Wextra -Werror
 
 SRC		=	./src/so_long.c ./src/set_commands.c ./src/set_images.c ./src/set_sprites.c \
 			./src/set_objects.c ./src/set_map_file.c ./utils/get_next_line.c ./src/set_mlx.c \

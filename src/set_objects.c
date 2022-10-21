@@ -12,14 +12,14 @@
 
 #include "../header/so_long.h"
 
-static void	create_player(t_data *game);
+static void	set_player(t_data *game);
 
 void	set_objects(t_data *game)
 {
-	create_player(game);
+	set_player(game);
 }
 
-static void	create_player(t_data *game)
+static void	set_player(t_data *game)
 {
 	int	x;
 	int	y;

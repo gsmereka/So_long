@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 22:12:25 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/17 12:56:37 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/21 00:14:09 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,14 +95,12 @@ static void	move_player(t_data *game, int dir, char axis)
 	if (axis == 'x')
 	{
 		game->map->grid[y][x] = '0';
-		game->player->x = (x + dir) * 80;
 		game->map->grid[y][x + dir] = 'P';
 		game->map->player_moves++;
 	}
 	else if (axis == 'y')
 	{
 		game->map->grid[y][x] = '0';
-		game->player->y = (y + dir) * 80;
 		game->map->grid[y + dir][x] = 'P';
 		game->map->player_moves++;
 	}
