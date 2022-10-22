@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 22:12:25 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/21 00:13:40 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/21 18:34:03 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	set_commands(int keysym, t_data *game)
 	axis_x = 'x';
 	axis_y = 'y';
 	if (keysym == XK_Escape)
-		set_shutdown(1, game, "See you soon!!!\n");
+		set_shutdown(1, game, "");
 	if (keysym == XK_w)
 		walk(-direction, game, axis_y);
 	else if (keysym == XK_s)
@@ -43,8 +43,8 @@ static int	walk(int dir, t_data *game, char axis)
 	int	x;
 	int	y;
 
-	x = game->player->x / 80;
-	y = game->player->y / 80;
+	x = game->player->x / game->player->size;
+	y = game->player->y / game->player->size;
 	if (axis == 'y')
 	{
 		game->player->frame = 1 + dir;
@@ -89,17 +89,19 @@ static void	move_player(t_data *game, int dir, char axis)
 	int	x;
 	int	y;
 
-	x = game->player->x / 80;
-	y = game->player->y / 80;
+	x = game->player->x / game->player->size;
+	y = game->player->y / game->player->size;
 	if (axis == 'x')
 	{
 		game->map->grid[y][x] = '0';
+		game->player->x = (x + dir) * game->player->size;
 		game->map->grid[y][x + dir] = 'P';
 		game->map->player_moves++;
 	}
 	else if (axis == 'y')
 	{
 		game->map->grid[y][x] = '0';
+		game->player->y = (y + dir) * game->player->size;
 		game->map->grid[y + dir][x] = 'P';
 		game->map->player_moves++;
 	}

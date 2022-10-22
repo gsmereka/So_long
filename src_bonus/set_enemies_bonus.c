@@ -12,18 +12,24 @@
 
 #include "../header_bonus/so_long_bonus.h"
 
-void	save_enemies_pos(t_data *game);
+static void	alloc_enemies_pos(t_data *game);
+static void	save_enemies_pos(t_data *game);
 
 void	set_enemies(t_data *game)
+{
+	alloc_enemies_pos(game);
+	save_enemies_pos(game);
+}
+
+static void	alloc_enemies_pos(t_data *game)
 {
 	game->enemy->pos = (char **)malloc(game->map->objects->n_enemies
 			* sizeof(char *));
 	if (!game->enemy->pos)
 		set_shutdown(0, game, "Error\nMemory Error.\n");
-	save_enemies_pos(game);
 }
 
-void	save_enemies_pos(t_data *game)
+static void	save_enemies_pos(t_data *game)
 {
 	int	y;
 	int	x;

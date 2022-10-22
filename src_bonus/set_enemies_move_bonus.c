@@ -17,14 +17,14 @@ static void	move_enemy(char *pos, t_data *game);
 
 void	set_enemies_move(t_data *game)
 {
-	clock_t		now;
-	static int	save;
+	clock_t			now;
+	static long int	save;
 
 	now = clock();
-	if (now - save > 290000)
+	if (now - save > 150000)
 	{
-		select_enemies(game);
 		save = now;
+		select_enemies(game);
 	}
 }
 

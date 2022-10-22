@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 22:38:40 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/15 23:28:27 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/21 18:16:56 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void	set_check_variables(t_check *valid_path, t_data *game)
 	valid_path->player_y = 0;
 	valid_path->max_lines = game->map->max_lines;
 	valid_path->max_cols = game->map->max_cols;
-	valid_path->lines = 0;
-	valid_path->cols = 0;
+	valid_path->lines = game->map->lin;
+	valid_path->cols = game->map->col;
 	valid_path->coins = 0;
 	valid_path->start = 0;
 	valid_path->exit = 0;

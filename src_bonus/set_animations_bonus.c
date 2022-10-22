@@ -29,11 +29,11 @@ int	set_animations(t_data *game)
 
 static void	animate_portal_sprites(t_sprites *sprite)
 {
-	clock_t		now;
-	static int	save;
+	clock_t			now;
+	static long int	save;
 
 	now = clock();
-	if (now - save > 50000)
+	if (now - save > 22000)
 	{
 		if (sprite->frame == 4)
 			sprite->frame = 1;
@@ -44,12 +44,12 @@ static void	animate_portal_sprites(t_sprites *sprite)
 
 static void	animate_enemies_sprites(t_data *game)
 {
-	static int	change;
-	clock_t		now;
-	static int	save;
+	static int		change;
+	clock_t			now;
+	static long int	save;
 
 	now = clock();
-	if (now - save > 50000)
+	if (now - save > 25000)
 	{
 		if (change < 3)
 		{

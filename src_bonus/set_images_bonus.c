@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:13:01 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/19 16:45:51 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/22 01:16:18 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ static void	draw_board(t_data *game);
 
 int	set_images(t_data *game)
 {
-	game->map->grid[0][1] = 'S';
-	game->map->grid[0][2] = 'S';
 	set_animations(game);
 	draw_board(game);
 	draw_steps(game);

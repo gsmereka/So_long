@@ -12,6 +12,7 @@
 
 #include "../header_bonus/so_long_bonus.h"
 
+static void	free_structures(int close_window, t_data *game);
 static void	closing_window(int close_window, t_data *game);
 static void	free_grid(char **grid, int lines);
 
@@ -41,7 +42,7 @@ static void	closing_window(int close_window, t_data *game)
 	}
 }
 
-void	free_structures(int close_window, t_data *game)
+static void	free_structures(int close_window, t_data *game)
 {
 	if (close_window > 0)
 		free_grid(game->enemy->pos, game->map->objects->n_enemies - 1);
@@ -52,7 +53,7 @@ void	free_structures(int close_window, t_data *game)
 	free_images(game->enemy);
 	free_images(game->board);
 	free_images(game->floor);
-	free_grid(game->map->grid, game->map->max_lines - 1);
+	free_grid(game->map->grid, game->map->max_lines);
 	free(game->map->player_steps);
 	free(game->map->objects);
 	free(game->map->addr);

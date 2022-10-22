@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 15:07:00 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/18 23:57:24 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/22 01:16:25 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ static void	set_board_img(t_data *game)
 
 	x = 160;
 	y = 80;
+	game->map->grid[0][1] = 'S';
+	game->map->grid[0][2] = 'S';
 	game->board->img[0] = mlx_xpm_file_to_image(game->win->ptr_mlx,
 			game->board->addr[0], &x, &y);
 }

@@ -15,18 +15,12 @@
 static void	set_variables(t_data *game, t_config *config);
 static void	set_frames(t_data *game);
 static void	init_sprites_values(t_sprites *sprites);
+static void	init_grid(t_data *game, t_config *config);
 
 void	set_values(t_data *game, t_config *config)
 {
 	set_variables(game, config);
-	game->floor->n_frames = 1;
-	game->wall->n_frames = 1;
-	game->colect->n_frames = 1;
-	game->exit->n_frames = 5;
-	game->player->n_frames = 4;
-	game->board->n_frames = 1;
-	game->enemy->n_frames = 4;
-	game->player->size = 80;
+	init_grid(game, config);
 	set_frames(game);
 	init_sprites_values(game->wall);
 	init_sprites_values(game->floor);
@@ -39,9 +33,6 @@ void	set_values(t_data *game, t_config *config)
 
 static void	set_variables(t_data *game, t_config *config)
 {
-	int	i;
-
-	i = 0;
 	game->map->objects->start = config->start;
 	game->map->objects->enemy = config->enemy;
 	game->map->objects->wall = config->wall;
@@ -57,6 +48,22 @@ static void	set_variables(t_data *game, t_config *config)
 	game->map->objects->n_enemies = 0;
 	game->map->player_moves = 0;
 	game->map->addr = NULL;
+	game->floor->n_frames = 1;
+	game->wall->n_frames = 1;
+	game->colect->n_frames = 1;
+	game->exit->n_frames = 5;
+	game->player->n_frames = 4;
+	game->board->n_frames = 1;
+	game->enemy->n_frames = 4;
+	game->player->frame = 2;
+	game->player->size = 80;
+}
+
+static void	init_grid(t_data *game, t_config *config)
+{
+	int	i;
+
+	i = 0;
 	while (i < config->max_lines + 1)
 	{
 		game->map->grid[i] = NULL;

@@ -81,7 +81,6 @@ void	ft_putstr_fd(char *s, int fd);
 // set_shutdown
 void	set_shutdown(int close_window, t_data *game, char *error_msg);
 void	finish_game(int close_window, t_data *game);
-void	free_structures(int close_window, t_data *game);
 // set_shutdown_tools
 int		close_window(t_data *game);
 void	free_images(t_sprites *sprites);

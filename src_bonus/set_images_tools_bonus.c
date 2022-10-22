@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 12:43:35 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/19 16:41:12 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/22 01:19:23 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,6 @@ void	draw_sprite(int y, int x, t_sprites *sprite, t_window *win)
 		win->ptr_win, sprite->img[frame], sprite->x, sprite->y);
 }
 
-void	draw_player(int y, int x, t_data *game)
-{
-	int	frame;
-
-	frame = game->player->frame;
-	game->player->x = x * game->player->size;
-	game->player->y = y * game->player->size;
-	mlx_put_image_to_window(game->win->ptr_mlx,
-		game->win->ptr_win, game->player->img[frame],
-		game->player->x, game->player->y);
-}
-
 void	draw(int i, int j, t_data *game, char object)
 {
 	if (object == 'f')
@@ -42,9 +30,7 @@ void	draw(int i, int j, t_data *game, char object)
 	if (object == 'x')
 		draw_sprite(i, j, game->enemy, game->win);
 	if (object == 'P')
-	{
-		draw_player(i, j, game);
-	}
+		draw_sprite(i, j, game->player, game->win);
 	if (object == 'w')
 		draw_sprite(i, j, game->wall, game->win);
 	if (object == 'e')

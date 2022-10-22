@@ -64,9 +64,9 @@ int	check_path(t_data *game)
 
 	set_path_check(game, &valid_path);
 	if (valid_path.coins != game->map->objects->n_collectibles)
-		set_shutdown(0, game, "Error\nSomething is blocking the exit.\n");
+		set_shutdown(0, game, "Error\nThere's something in the way.\n");
 	if (valid_path.exit != game->map->objects->n_exits)
-		set_shutdown(0, game, "Error\nSomething is blocking the exit.\n");
+		set_shutdown(0, game, "Error\nThere's something in the way.\n");
 	return (0);
 }
 
