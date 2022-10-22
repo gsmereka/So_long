@@ -35,10 +35,10 @@ static void	animate_portal_sprites(t_sprites *sprite)
 	now = clock();
 	if (now - save > 22000)
 	{
+		save = now;
 		if (sprite->frame == 4)
 			sprite->frame = 1;
 		sprite->frame++;
-		save = now;
 	}
 }
 
@@ -51,6 +51,7 @@ static void	animate_enemies_sprites(t_data *game)
 	now = clock();
 	if (now - save > 25000)
 	{
+		save = now;
 		if (change < 3)
 		{
 			game->enemy->frame++;
@@ -62,6 +63,5 @@ static void	animate_enemies_sprites(t_data *game)
 		change++;
 		if (change == 6)
 			change = 0;
-		save = now;
 	}
 }
