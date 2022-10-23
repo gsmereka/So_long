@@ -43,8 +43,6 @@ void	find_player(t_check *valid_path, t_data *game);
 void	copy_grid(t_check *valid_path, t_data *game);
 void	set_check_variables(t_check *valid_path, t_data *game);
 void	free_check_grid(t_check *valid_path);
-// set_objects
-void	set_objects(t_data *game);
 // set_sprites
 void	set_sprites(t_data *game);
 // set_mlx

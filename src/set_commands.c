@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 22:12:25 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/10/21 18:34:03 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/10/23 14:11:08 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,12 @@ static int	can_walk(t_data *game, int x, int y)
 		else if (game->map->grid[y][x] == game->map->objects->exit)
 		{
 			if (game->map->objects->n_collectibles == 0)
+			{
+				ft_putstr_fd("Steps: ", 1);
+				ft_putnbr_fd(game->map->player_moves + 1, 1);
+				ft_putstr_fd("\n", 1);
 				set_shutdown(1, game, "");
+			}
 			return (0);
 		}
 		else
