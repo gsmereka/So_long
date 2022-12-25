@@ -6,55 +6,51 @@
 #    By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/30 22:11:38 by lbiasuz           #+#    #+#              #
-#    Updated: 2022/10/22 00:53:15 by gsmereka         ###   ########.fr        #
+#    Updated: 2022/12/25 03:56:03 by gsmereka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	so_long
+NAME		=	so_long
 
-NAME_B	=	so_long_bonus
+CFLAGS		=	-Wall -Wextra -Werror
 
-CFLAGS	=	-Wall -Wextra -Werror
+MLX_FLAGS	=	-lmlx -lXext -lX11
 
-SRC		=	./src/so_long.c ./src/set_commands.c ./src/set_images.c ./src/set_sprites.c \
-			./src/set_map_file.c ./utils/get_next_line.c ./src/set_mlx.c \
-			./utils/utils.c ./utils/utils_2.c ./src/set_map.c ./src/set_map_tools.c  ./src/set_shutdown.c \
-			./src/set_oppening.c ./src/set_path_check.c ./src/set_path_check_tools.c ./src/set_images_tools.c \
-			./src/set_shutdown_tools.c ./src/set_objects_image.c ./src/set_values.c
+OBJ_DIR		=	./obj
 
-SRC_B	=	./src_bonus/so_long_bonus.c ./src_bonus/set_commands_bonus.c ./src_bonus/set_images_bonus.c ./src_bonus/set_sprites_bonus.c \
-			./src_bonus/set_map_file_bonus.c ./utils_bonus/get_next_line_bonus.c ./src_bonus/set_mlx_bonus.c \
-			./utils_bonus/utils_bonus.c ./utils_bonus/utils_2_bonus.c ./src_bonus/set_map_bonus.c ./src_bonus/set_map_tools_bonus.c  ./src_bonus/set_shutdown_bonus.c \
-			./src_bonus/set_oppening_bonus.c ./src_bonus/set_path_check_bonus.c ./src_bonus/set_path_check_tools_bonus.c ./src_bonus/set_images_tools_bonus.c \
-			./src_bonus/set_shutdown_tools_bonus.c ./src_bonus/set_objects_image_bonus.c ./src_bonus/set_values_bonus.c ./src_bonus/set_steps_to_char_bonus.c\
-			./src_bonus/set_enemies_move_bonus.c ./src_bonus/set_enemies_bonus.c ./src_bonus/set_animations_bonus.c
+SRC_DIR		=	src_bonus
 
-HEADER		=	./header/so_long.h
+UTILS_DIR	=	utils_bonus
 
-HEADER_B	=	./header_bonus/so_long_bonus.h
+HEADER		=	./header_bonus/so_long_bonus.h
 
-OBJ		=	$(SRC:.c=.o)
+SRC			=	so_long_bonus.c set_commands_bonus.c set_images_bonus.c set_sprites_bonus.c \
+				set_map_file_bonus.c set_mlx_bonus.c \
+				set_map_tools_bonus.c  set_shutdown_bonus.c set_map_bonus.c \
+				set_oppening_bonus.c set_path_check_bonus.c set_path_check_tools_bonus.c set_images_tools_bonus.c \
+				set_shutdown_tools_bonus.c set_objects_image_bonus.c set_values_bonus.c set_steps_to_char_bonus.c\
+				set_enemies_move_bonus.c set_enemies_bonus.c set_animations_bonus.c
 
-OBJ_B	=	$(SRC_B:.c=.o)
+UTILS		=	utils_bonus.c utils_2_bonus.c get_next_line_bonus.c
+
+OBJ_SRC		=	$(addprefix $(OBJ_DIR)/, $(addprefix $(SRC_DIR)/, $(SRC:.c=.o)))
+
+OBJ_UTILS	=	$(addprefix $(OBJ_DIR)/, $(addprefix $(UTILS_DIR)/, $(UTILS:.c=.o)))
 
 all: $(NAME)
 
-bonus: $(NAME_B)
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(OBJ_DIR) $(OBJ_DIR)/$(SRC_DIR) $(OBJ_DIR)/$(UTILS_DIR)
+	cc $(CFLAGS) -c $< -o $@ $(MLX_FLAGS)
 
-.c.o: $(HEADER)
-	cc $(CFLAGS) -c $< -o $@ 
-
-$(NAME): $(OBJ)
-	cc $(CFLAGS) -o $(NAME) $(OBJ) -lmlx -lXext -lX11
-
-$(NAME_B): $(OBJ_B)
-	cc $(CFLAGS) -o $(NAME_B) $(OBJ_B) -lmlx -lXext -lX11
+$(NAME): $(HEADER) $(OBJ_SRC) $(OBJ_UTILS)
+	cc $(CFLAGS) -o $(NAME) $(OBJ_SRC) $(OBJ_UTILS) $(MLX_FLAGS)
 
 clean:
-	rm -f $(OBJ) $(OBJ_B)
+	rm -rf $(OBJ_SRC) $(OBJ_UTILS) $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME) $(NAME_B)
+	rm -f $(NAME)
 
 re: fclean all
 
