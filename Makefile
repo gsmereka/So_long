@@ -6,7 +6,7 @@
 #    By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/30 22:11:38 by lbiasuz           #+#    #+#              #
-#    Updated: 2022/12/25 03:56:03 by gsmereka         ###   ########.fr        #
+#    Updated: 2022/12/25 04:05:08 by gsmereka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,20 +18,20 @@ MLX_FLAGS	=	-lmlx -lXext -lX11
 
 OBJ_DIR		=	./obj
 
-SRC_DIR		=	src_bonus
+SRC_DIR		=	src
 
-UTILS_DIR	=	utils_bonus
+UTILS_DIR	=	utils
 
-HEADER		=	./header_bonus/so_long_bonus.h
+HEADER		=	./header/so_long.h
 
-SRC			=	so_long_bonus.c set_commands_bonus.c set_images_bonus.c set_sprites_bonus.c \
-				set_map_file_bonus.c set_mlx_bonus.c \
-				set_map_tools_bonus.c  set_shutdown_bonus.c set_map_bonus.c \
-				set_oppening_bonus.c set_path_check_bonus.c set_path_check_tools_bonus.c set_images_tools_bonus.c \
-				set_shutdown_tools_bonus.c set_objects_image_bonus.c set_values_bonus.c set_steps_to_char_bonus.c\
-				set_enemies_move_bonus.c set_enemies_bonus.c set_animations_bonus.c
+SRC			=	so_long.c set_commands.c set_images.c set_sprites.c \
+				set_map_file.c set_mlx.c \
+				set_map_tools.c  set_shutdown.c set_map.c \
+				set_oppening.c set_path_check.c set_path_check_tools.c set_images_tools.c \
+				set_shutdown_tools.c set_objects_image.c set_values.c set_steps_to_char.c\
+				set_enemies_move.c set_enemies.c set_animations.c
 
-UTILS		=	utils_bonus.c utils_2_bonus.c get_next_line_bonus.c
+UTILS		=	utils.c utils_2.c get_next_line.c
 
 OBJ_SRC		=	$(addprefix $(OBJ_DIR)/, $(addprefix $(SRC_DIR)/, $(SRC:.c=.o)))
 
