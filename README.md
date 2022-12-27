@@ -31,12 +31,4 @@ Se você quiser criar um mapa ".ber" personalizado, aqui estão algumas regras a
 Você precisa verificar se há um caminho válido no mapa.
 
 ### Aqui está um exemplo de um mapa válido simples:
-1111111
-1000P01
-1111011
-1E01011
-1001011
-1000011
-100X0C1
-1000001
-1111111
+![MAP_EXEMPLE](./readme_utils/map_ex.bmp)
