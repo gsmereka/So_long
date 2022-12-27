@@ -17,20 +17,20 @@ O objetivo do jogador é coletar todos os itens colecionáveis presentes
 ## Criando um mapa ".ber"
 Se você quiser criar um mapa ".ber" personalizado, aqui estão algumas regras a seguir:
 
-O mapa pode ser composto apenas por estes 6 caracteres:
-'0' para um espaço vazio,
-'1' para uma parede,
-'C' para um colecionável,
-'E' para uma saída do mapa,
-'P' para a posição inicial do jogador.
-'X' para a posição inicial de um Inimigo
-O arquivo ".ber" deve ter no máximo 9 linhas e 16 caracteres por linha.
-O mapa deve conter pelo menos 1 saída, 1 colecionável e 1 posição inicial.
-O mapa deve ser retangular.
-O mapa deve ser fechado/rodeado por paredes. Se não for, o programa deve retornar um erro.
+### O mapa pode ser composto apenas por estes 6 caracteres:
+* '0' para um espaço vazio
+* '1' para uma parede
+* 'C' para um colecionável
+* 'E' para uma saída do mapa
+* 'P' para a posição inicial do jogador
+* 'X' para a posição inicial de um Inimigo
+* O arquivo ".ber" deve ter no máximo 9 linhas e 16 caracteres por linha.
+* O mapa deve conter pelo menos 1 saída, 1 colecionável e 1 posição inicial.
+* O mapa deve ser retangular.
+* O mapa deve ser fechado/rodeado por paredes. Se não for, o programa deve retornar um erro.
 Você precisa verificar se há um caminho válido no mapa.
 
-Aqui está um exemplo de um mapa válido simples:
+### Aqui está um exemplo de um mapa válido simples:
 1111111
 1000P01
 1111011
