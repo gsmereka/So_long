@@ -8,11 +8,7 @@ O repositório inclui um Makefile que pode ser usado para compilar o código fon
 Além do arquivo Makefile, o repositório também inclui todos os arquivos de código fonte e recursos adicionais necessários para compilar e executar o programa "so_long".
 
 ## Regras do jogo
-O objetivo do jogador é coletar todos os itens colecionáveis presentes no mapa e depois escapar escolhendo o caminho mais curto possível.
-As teclas W, A, S e D devem ser usadas para mover o personagem principal.
-A tecla ESC encerra o jogo.
-O objetivo do jogador é coletar todos os itens colecionáveis presentes
-
+O objetivo do jogador é coletar todos os poções presentes no mapa e depois escapar escolhendo o caminho mais curto possível sem ser interceptado por alguma slime (se houver), as teclas W, A, S e D devem ser usadas para mover o personagem principal e a tecla ESC encerra o jogo. Boa sorte!!
 
 ## Criando um mapa ".ber"
 Se você quiser criar um mapa ".ber" personalizado, aqui estão algumas regras a seguir:
