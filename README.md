@@ -29,6 +29,7 @@ O mapa deve conter pelo menos 1 saída, 1 colecionável e 1 posição inicial.
 O mapa deve ser retangular.
 O mapa deve ser fechado/rodeado por paredes. Se não for, o programa deve retornar um erro.
 Você precisa verificar se há um caminho válido no mapa.
+
 Aqui está um exemplo de um mapa válido simples:
 1111111
 1000P01
