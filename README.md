@@ -1,33 +1,30 @@
 # 42_so_long
 
-## Sobre o projeto
-O projeto "so_long" é um jogo 2D top-down escrito em C e utilizando a biblioteca gráfica minilibx. O objetivo do jogo é controlar um mago habilidoso que precisa coletar poções mágicas para abrir um portal e escapar de um castelo assombrado antes que seja atingido por algum slime.
+## About the project
+The "so_long" project is a 2D top-down game written in C and using the minilibx graphics library. The goal of the game is to control a skilled mage who must collect magic potions to open a portal and escape from a haunted castle before being hit by any goo monster.
 
-O repositório inclui um Makefile que pode ser usado para compilar o código fonte e criar o executável do jogo. Também há uma pasta "maps" com mapas válidos que podem ser usados com o programa. Para jogar o jogo, basta fornecer um endereço de arquivo ".ber" como argumento, que contém a estrutura do mapa em que o jogo será jogado. O mapa pode incluir obstáculos, poções mágicas escondidas e monstros-gosma espreitando em cada canto.
+The repository includes a Makefile that can be used to compile the source code and create the game executable. There is also a "maps" folder with valid maps that can be used with the program. To play the game, simply provide a ".ber" file address as an argument, which contains the structure of the map on which the game will be played. The map may include obstacles, hidden magic potions, and goo monsters lurking in every corner.
 
-Além do arquivo Makefile, o repositório também inclui todos os arquivos de código fonte e recursos adicionais necessários para compilar e executar o programa "so_long".
+## Game rules
+The player's goal is to collect all the potions on the map and then escape by choosing the shortest path without being intercepted by any slime (if there is any). The keys W, A, S and D should be used to move the main character and the ESC key ends the game. Good luck!!
 
-## Regras do jogo
-O objetivo do jogador é coletar todos os poções presentes no mapa e depois escapar escolhendo o caminho mais curto possível sem ser interceptado por alguma slime (se houver), as teclas W, A, S e D devem ser usadas para mover o personagem principal e a tecla ESC encerra o jogo. Boa sorte!!
+## Making a ".ber" map
+If you want create a customized ".ber" map, here are some rules to follow:
 
-## Criando um mapa ".ber"
-Se você quiser criar um mapa ".ber" personalizado, aqui estão algumas regras a seguir:
+### The map can be composed of 6 different characters:
+* '0' for an empty space
+* '1' for a wall
+* 'C' for a potion
+* 'E' for an exit from the map
+* 'P' for the initial position of the Mage
+* 'X' for the initial position of a goo monster
+* The ".ber" file must have a maximum of 9 lines and 16 characters per line.
+* The map must contain at least 1 exit, 1 collectible and 1 initial position.
+* The map must be rectangular.
+* The map must be closed / surrounded by walls.
 
-### O mapa pode ser composto apenas por estes 6 caracteres:
-* '0' para um espaço vazio
-* '1' para uma parede
-* 'C' para um colecionável
-* 'E' para uma saída do mapa
-* 'P' para a posição inicial do Mago
-* 'X' para a posição inicial de um Slime
-* O arquivo ".ber" deve ter no máximo 9 linhas e 16 caracteres por linha.
-* O mapa deve conter pelo menos 1 saída, 1 colecionável e 1 posição inicial.
-* O mapa deve ser retangular.
-* O mapa deve ser fechado/rodeado por paredes. Se não for, o programa deve retornar um erro.
-Você precisa verificar se há um caminho válido no mapa.
-
-### Aqui está um exemplo de um mapa válido simples:
+### Here is an example of a valid map:
 ![MAP_EXAMPLE](./readme_utils/map_ex.bmp)
 
-### Jogo com o mapa do exemplo anterior:
+### Example of a game using the previous map:
 ![GAME_EXAMPLE](./readme_utils/game_example.gif)
