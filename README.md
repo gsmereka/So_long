@@ -1,7 +1,7 @@
 # 42_so_long
 
 ## About the project
-The "so_long" project is a 2D top-down game written in C and using the minilibx graphics library. The goal of the game is to control a skilled mage who must collect magic potions to open a portal and escape from a haunted castle before being hit by any goo monster.
+The "so_long" project is a 2D top-down game written in C and using the 42-minilibx graphics library. The goal of the game is to control a skilled mage who must collect magic potions to open a portal and escape from a haunted castle before being hit by any goo monster.
 
 The repository includes a Makefile that can be used to compile the source code and create the game executable. There is also a "maps" folder with valid maps that can be used with the program. To play the game, simply provide a ".ber" file address as an argument, which contains the structure of the map on which the game will be played. The map may include obstacles, hidden magic potions, and goo monsters lurking in every corner.
 
@@ -22,6 +22,10 @@ If you want create a customized ".ber" map, here are some rules to follow:
 * The map must contain at least 1 exit, 1 collectible and 1 initial position.
 * The map must be rectangular.
 * The map must be closed / surrounded by walls.
+
+### How to run
+* run "make"
+* run "./so_long <map_path>"
 
 ### Here is an example of a valid map:
 ![MAP_EXAMPLE](./readme_utils/map_ex.bmp)
