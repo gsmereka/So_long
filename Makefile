@@ -39,6 +39,9 @@ OBJ_UTILS	=	$(addprefix $(OBJ_DIR)/, $(addprefix $(UTILS_DIR)/, $(UTILS:.c=.o)))
 
 all: $(NAME)
 
+run: $(NAME)
+	./$(NAME) ./maps/1_2_four_enemies.ber
+
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR) $(OBJ_DIR)/$(SRC_DIR) $(OBJ_DIR)/$(UTILS_DIR)
 	cc $(CFLAGS) -c $< -o $@ $(MLX_FLAGS)
@@ -54,4 +57,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: bonus all clean fclean re
+.PHONY: bonus all clean fclean re run
